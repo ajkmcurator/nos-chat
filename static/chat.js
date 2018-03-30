@@ -111,6 +111,7 @@ function login() {
 //        connect();
 //    }
     if (user.value.length > 0) {
+        if (room == undefined) {room = 'lobby';}
         uName = user.value.substring(0, 21);
         password = hashCode(key.value);
         key.value = '';
