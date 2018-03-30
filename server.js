@@ -28,6 +28,7 @@ io.on('connection', function(socket){
   // What happens when a user disconnects
   socket.on('disconnect', function(){
   });
+
   // Authentication attempts
   socket.on('auth', function(data){
     var userList = require('./users.json');
@@ -36,12 +37,16 @@ io.on('connection', function(socket){
     room = data[2]
     console.log(userList[uName] + ' : ' + pHash + ' : ' + room);
     if (userList[uName] !== undefined && pHash == userList[uName].pass) {
+      // If they have logged in
       console.log('yay');
       socket.join(room);
       // Returns data to prevent tampering
       io.to(socket.id).emit('a-ok', data);
+      io.to(room).emit('message', ['_System', 'User ['+uName+'] has joined']);
+      users[socket.id] = [uName, room];
     }
   });
+
   // Getting a message
   socket.on('message', function(data) {
     var msg = data['data'][1];
