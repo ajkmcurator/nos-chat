@@ -53,20 +53,20 @@ io.on('connection', function(socket){
   });
 
   //New accounts
-  socket.on('new account', function(data){
+  /**socket.on('new account', function(data){
     if (userList[data[0]] == undefined) {
       console.log("New user request : "+data[0]+":"+data[1]);
       io.to(socket.id).emit('request done', data[0]);
     } else {
       io.to(socket.id).emit('user check failed', data[0]);
     }
-  });
+  });***/
 
   // Getting a message
   socket.on('message', function(data) {
     var msg = data['data'][1];
     io.to(data['room']).emit('message', data['data']);
-    if (msg.startsWith('?')) {
+    /**if (msg.startsWith('?')) {
       if (msg.startsWith('?kick ') && userList[users[socket.id][0]].admin) {
         for (key in users) {
           if (users[key][0] == msg.substring(6, 99)) {
@@ -87,7 +87,7 @@ io.on('connection', function(socket){
       } else if (msg == '?help') {
         io.to(data['room']).emit('message', ['_System', cmdHelp]);
       } else {
-      }
+      }**/
       //console.log('data');
     }
   });
