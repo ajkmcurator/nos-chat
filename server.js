@@ -13,7 +13,7 @@ var users = {};
 
 // Port checking
 if (process.argv[2] == undefined) {
-  var port = 80;
+  var port = 8080;
 } else {
   var port = process.argv[2]; // Use node server.js [port]
 }
