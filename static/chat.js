@@ -85,20 +85,20 @@ function sendMsg() {
 }
 
 function login() {
-//    if (hashCode(key.value) == passwd && uName.length > 0) {
-//       uName = user.value.substring(0, 21);
-//        if (uName == '_System') {
-//            uName = 'I_tried_to_hack_the_system._Sorry.'
-//        }
-//        document.cookie='key='+passwd;
-//        document.cookie='user='+uName;
-//        key.value = '';
-//        key.disabled = true;
-//        user.value = '';
-//        user.disabled = true;
-//        keyPage.style.visibility = 'hidden';
-//        connect();
-//    }
+    if (hashCode(key.value) == passwd && uName.length > 0) {
+       uName = user.value.substring(0, 21);
+        if (uName == '_System') {
+            uName = 'I_tried_to_hack_the_system._Sorry.'
+        }
+        document.cookie='key='+passwd;
+        document.cookie='user='+uName;
+        key.value = '';
+        key.disabled = true;
+        user.value = '';
+        user.disabled = true;
+        keyPage.style.visibility = 'hidden';
+        connect();
+    }
     if (user.value.length > 0) {
         if (room == undefined) {room = 'lobby';}
         uName = user.value.substring(0, 21);
