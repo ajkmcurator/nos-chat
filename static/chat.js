@@ -132,3 +132,13 @@ vis(function(){
     if (vis()) {changeIco('/static/favicon.png');}
     //changeIco(vis() ? '/static/favicon.png' : '/static/alert.png');
 });
+
+socket.on('a-ok', function(data){
+    document.cookie='user='+data[0];
+    document.cookie='key='+data[1];
+    key.value='';
+    key.disabled = true;
+    user.value = '';
+    user.disabled = true;
+    keyPage.style.visibility = 'hidden';
+});
