@@ -119,6 +119,14 @@ function login() {
     }
 }
 
+// Jquery
+$(function () {
+    $('form').submit(function(){
+        sendMsg();
+        return false;
+    });
+});
+
 // Callbacks
 vis(function(){
     if (vis()) {changeIco('/static/favicon.png');}
