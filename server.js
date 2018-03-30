@@ -56,7 +56,7 @@ io.on('connection', function(socket){
   socket.on('new account', function(data){
     var userList = require('./users.json');
     if (userList[data[0]] == undefined) {
-      console.log("New user request : "+data[0]+":"+data[1];
+      console.log("New user request : "+data[0]+":"+data[1]);
     } else {
       io.to(socket.id).emit('user check failed', data[0]);
     }
