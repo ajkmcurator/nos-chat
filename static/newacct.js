@@ -29,6 +29,14 @@ function sendRequest() {
     }
 }
 
+// Jquery
+$(function () {
+    $('form').submit(function(){
+        sendMsg();
+        return false;
+    });
+});
+
 // Callbacks
 socket.on('user check failed', function(data){
     document.getElementById("err").InnerHTML = "Error: Username ["+data+"] is already in use!";
