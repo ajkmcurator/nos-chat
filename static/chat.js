@@ -105,12 +105,21 @@ function login() {
 //        document.cookie='user='+uName;
 //        key.value = '';
 //        key.disabled = true;
-//       user.value = '';
+//        user.value = '';
 //        user.disabled = true;
 //        keyPage.style.visibility = 'hidden';
 //        connect();
 //    }
     if (user.value.length > 0) {
-        socket.emit('auth', [user.value, hashCode(key.value)]);
+        uName = user.value.substring(0, 21);
+        password = hashCode(key.value);
+        key.value = '';
+        socket.emit('auth', [uName, password, room]);
     }
 }
+
+// Callbacks
+vis(function(){
+    if (vis()) {changeIco('/static/favicon.png');}
+    //changeIco(vis() ? '/static/favicon.png' : '/static/alert.png');
+});
