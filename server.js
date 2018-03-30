@@ -54,7 +54,6 @@ io.on('connection', function(socket){
 
   //New accounts
   socket.on('new account', function(data){
-    var userList = require('./users.json');
     if (userList[data[0]] == undefined) {
       console.log("New user request : "+data[0]+":"+data[1]);
       io.to(socket.id).emit('request done', data[0]);
@@ -68,7 +67,14 @@ io.on('connection', function(socket){
     var msg = data['data'][1];
     io.to(data['room']).emit('message', data['data']);
     if (msg.startsWith('?')) {
-      if (msg == '?ping') {
+      if (msg.startsWith('?kick ' && userList[users[socket.id][0]].admin) {
+        for (key in users) {
+          if (users[key][0] == msg.substring(6, 99)) {
+            io.to(key).emit('kicked');
+          }
+        }
+      }
+      } else if (msg == '?ping') {
         for (usr in users) {
           io.to(data['room']).emit('message', ['_System', users[usr]]);
         }
