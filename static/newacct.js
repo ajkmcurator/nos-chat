@@ -23,7 +23,7 @@ function sendRequest() {
     pwd = key.value;
     cPwd = key.value;
     if (pwd == cPwd) {
-        socket.emit('new account', []);
+        socket.emit('new account', [uName, hashCode(pwd)]);
     } else {
         document.getElementById("err").InnerHTML = "Error: Make sure the passwords are the same!";
     }
