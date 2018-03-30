@@ -42,6 +42,29 @@ io.on('connection', function(socket){
       io.to(socket.id).emit('a-ok', data);
     }
   });
+  // Getting a message
+  socket.on('message', function(data) {
+    var msg = data['data'][1];
+    io.to(data['room']).emit('message', data['data']);
+    if (msg.startsWith('?')) {
+      if (msg == '?ping') {
+        for (usr in users) {
+          io.to(data['room']).emit('message', ['_System', users[usr]]);
+        }
+      } else if (msg == '?ping room') {
+        for (usr in users) {
+          if (users[usr][1] == data['room']) {
+            io.to(data['room']).emit('message', ['_System', users[usr]]);
+          }
+        }
+      } else if (msg == '?help') {
+        io.to(data['room']).emit('message', ['_System', cmdHelp]);
+      } else {
+      }
+      //console.log('data');
+    }
+  });
+ 
 });
 
 // Start the server
