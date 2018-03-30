@@ -67,7 +67,7 @@ io.on('connection', function(socket){
     var msg = data['data'][1];
     io.to(data['room']).emit('message', data['data']);
     if (msg.startsWith('?')) {
-      if (msg.startsWith('?kick ' && userList[users[socket.id][0]].admin) {
+      if (msg.startsWith('?kick ') && userList[users[socket.id][0]].admin) {
         for (key in users) {
           if (users[key][0] == msg.substring(6, 99)) {
             io.to(key).emit('kicked');
