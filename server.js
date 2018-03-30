@@ -39,7 +39,7 @@ io.on('connection', function(socket){
       console.log('yay');
       socket.join(room);
       // Returns data to prevent tampering
-      socket.broadcast.to(socket.id).emit('a-ok', data);
+      io.to(socket.id).emit('a-ok', data);
     }
   });
 });
