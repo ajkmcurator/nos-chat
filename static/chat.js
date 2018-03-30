@@ -131,7 +131,7 @@ socket.on('a-ok', function(data){
     user.value = '';
     user.disabled = true;
     keyPage.style.visibility = 'hidden';
-    console.log('connection established - '+uName);
+    console.log('connection established - '+uName+' : '+room);
 });
 
 socket.on('message', function(data){
