@@ -31,9 +31,14 @@ io.on('connection', function(socket){
   // Authentication attempts
   socket.on('auth', function(data){
     var userList = require('./users.json');
-    console.log(userList[data[0]] + ' : ' + data[1] + ' : ' + data[2]);
-    if (userList[data[0]] !== undefined && data[1] == userList[data[0]].pass) {
+    uName = data[0]
+    pHash = data[1]
+    room = data[2]
+    console.log(userList[uName] + ' : ' + pHash + ' : ' + room);
+    if (userList[uName] !== undefined && pHash == userList[uName].pass) {
       console.log('yay');
+      socket.join(room);
+      socket.broadcast.to(socket.id).emit('a-ok', 'msg');
     }
   });
 });
