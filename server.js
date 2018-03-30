@@ -33,7 +33,7 @@ io.on('connection', function(socket){
     var userList = require('./users.json');
   });
 }
-
+      }
 // Start the server
 http.listen(port, function(){
   console.log('Listening on port:'+port);
