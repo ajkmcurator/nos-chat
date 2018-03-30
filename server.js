@@ -27,6 +27,10 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   // What happens when a user disconnects
   socket.on('disconnect', function(){
+    if (users[socket.id] != undefined) {
+      io.to(users[socket.id][1]).emit('message', ['_System', 'User ['+users[socket.id][0]+'] has left']);
+      delete users[socket.id];
+    }
   });
 
   // Authentication attempts
