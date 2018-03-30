@@ -33,3 +33,7 @@ function sendRequest() {
 socket.on('user check failed', function(data){
     document.getElementById("err").InnerHTML = "Error: Username ["+data+"] is already in use!";
 });
+
+socket.on('request done', function(data){
+    document.getElementById("err").InnerHTML = "Success! Account ["+data+"] has been requested for creation!";
+});
