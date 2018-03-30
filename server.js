@@ -32,6 +32,9 @@ io.on('connection', function(socket){
   socket.on('auth', function(data){
     var userList = require('./users.json');
     console.log(userList[data[0]] + ' : ' + data[1] + ' : ' + data[2]);
+    if (userList[data[0]] !== undefined && data[1] == userList[data[0]].pass) {
+      console.log('yay');
+    }
   });
 });
 
