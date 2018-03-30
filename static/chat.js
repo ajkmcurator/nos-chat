@@ -133,3 +133,16 @@ socket.on('a-ok', function(data){
     keyPage.style.visibility = 'hidden';
     console.log('connection established - '+uName);
 });
+
+socket.on('message', function(data){
+    var message = '';
+    if (data[1].includes('@'+uName)) {
+        if (!vis()) {changeIco('/static/alert.png');}
+        message = '<div class="alert"> ['+data[0]+'] '+data[1]+'</div>';
+    } else {
+        message = '<div>['+data[0]+'] '+data[1]+'</div>';
+    }
+    messages.innerHTML += message;
+    if (data[1] == '?kick '+uName) {socket.disconnect();}
+    window.scrollTo(0,document.body.scrollHeight);
+});
