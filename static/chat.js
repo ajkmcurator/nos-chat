@@ -134,7 +134,7 @@ socket.on('a-ok', function(data){
     console.log('connection established - '+uName+' : '+room);
 });
 
-socket.on('kicked', function(){socket.disconnect()'});
+socket.on('kicked', function(){socket.disconnect()});
 
 socket.on('message', function(data){
     var message = '';
