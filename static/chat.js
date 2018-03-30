@@ -50,24 +50,6 @@ function getUrlVars() {
     return vars;
 }
 
-function connect() {
-    if (room !== undefined) {
-        socket.emit('switch', [room, uName]);
-    }
-    else {
-        room = 'lobby'; // Set the default room to 'lobby'
-        socket.emit('switch', [room, uName]);
-    }
-    console.log('connection established - '+uName);
-}
-
-function sendMsg() {
-    if (room !== undefined && m.value !== '') {
-        socket.emit('message', {'room':room, 'data':[uName, m.value.substring(0, 401)]});
-        m.value=''; // Reset chat bar
-    }
-}
-
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -93,6 +75,13 @@ hashCode = function(str){
         hash = hash & hash; // Convert to 32bit integer
     }
     return hash;
+}
+
+function sendMsg() {
+    if (room !== undefined && m.value !== '') {
+        socket.emit('message', {'room':room, 'data':[uName, m.value.substring(0, 401)]});
+        m.value=''; // Reset chat bar
+    }
 }
 
 function login() {
@@ -142,4 +131,5 @@ socket.on('a-ok', function(data){
     user.value = '';
     user.disabled = true;
     keyPage.style.visibility = 'hidden';
+    console.log('connection established - '+uName);
 });
