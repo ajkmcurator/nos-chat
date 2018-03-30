@@ -89,7 +89,7 @@ io.on('connection', function(socket){
       } else {
       }
       //console.log('data');
-    }
+    )}
   });
 });
 
