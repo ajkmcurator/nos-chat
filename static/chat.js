@@ -134,6 +134,7 @@ vis(function(){
 });
 
 socket.on('a-ok', function(data){
+    console.log(data);
     document.cookie='user='+data[0];
     document.cookie='key='+data[1];
     key.value='';
