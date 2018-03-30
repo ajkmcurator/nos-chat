@@ -39,7 +39,7 @@ io.on('connection', function(socket){
     uName = data[0]
     pHash = data[1]
     room = data[2]
-    console.log(userList[uName] + ' : ' + pHash + ' : ' + room);
+    console.log(uName + ' : ' + pHash + ' : ' + room);
     if (userList[uName] !== undefined && pHash == userList[uName].pass) {
       // If they have logged in
       console.log('yay');
