@@ -143,6 +143,5 @@ socket.on('message', function(data){
         message = '<div>['+data[0]+'] '+data[1]+'</div>';
     }
     messages.innerHTML += message;
-    if (data[1] == '?kick '+uName) {socket.disconnect();}
     window.scrollTo(0,document.body.scrollHeight);
 });
