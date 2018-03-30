@@ -4,6 +4,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var url = require('url');
+var fs = require('fs'); 
 
 // Variables
 var cmdHelp = "?ping : see online users<br>?ping room : see users in your current room"
@@ -51,6 +52,16 @@ io.on('connection', function(socket){
     }
   });
 
+  //New accounts
+  socket.on('new account', function(data){
+    var userList = require('./users.json');
+    if (userList[data[0]] == undefined) {
+      console.log("New user request : "+data[0]+":"+data[1];
+    } else {
+      io.to(socket.id).emit('user check failed', data[0]);
+    }
+  });
+
   // Getting a message
   socket.on('message', function(data) {
     var msg = data['data'][1];
@@ -73,7 +84,6 @@ io.on('connection', function(socket){
       //console.log('data');
     }
   });
- 
 });
 
 // Start the server
