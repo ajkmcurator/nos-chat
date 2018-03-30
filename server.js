@@ -31,6 +31,7 @@ io.on('connection', function(socket){
   // Authentication attempts
   socket.on('auth', function(data){
     var userList = require('./users.json');
+    console.log(userList[data[0]]);
   });
 });
 
