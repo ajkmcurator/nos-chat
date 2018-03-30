@@ -38,7 +38,8 @@ io.on('connection', function(socket){
     if (userList[uName] !== undefined && pHash == userList[uName].pass) {
       console.log('yay');
       socket.join(room);
-      socket.broadcast.to(socket.id).emit('a-ok', 'msg');
+      // Returns data to prevent tampering
+      socket.broadcast.to(socket.id).emit('a-ok', data);
     }
   });
 });
