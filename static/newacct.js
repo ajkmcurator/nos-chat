@@ -19,13 +19,17 @@ hashCode = function(str){
 }
 
 function sendRequest() {
-  uName = user.value;
-  pwd = key.value;
-  cPwd = key.value;
-  socket.emit('new account', 
+    uName = user.value;
+    pwd = key.value;
+    cPwd = key.value;
+    if (pwd == cPwd) {
+        socket.emit('new account', []);
+    } else {
+        document.getElementById("err").InnerHTML = "Error: Make sure the passwords are the same!";
+    }
 }
 
 // Callbacks
 socket.on('user check failed', function(data){
-  document.getElementById("err").InnerHTML = "Error: Username ["+data+"] is already in use!";
+    document.getElementById("err").InnerHTML = "Error: Username ["+data+"] is already in use!";
 });
