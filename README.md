@@ -1,4 +1,5 @@
-# NOW HACKABLE =(
+# nos-chat
+A web based chat client
 
 # Requirements
 * Node.js
@@ -9,6 +10,8 @@
 
 # Installing Dependencies
 > `npm install --save express socket.io`
+
+> Put a file named users.json in the nos-cli folder
 
 # Starting server
 > `node server.js [port]`
